@@ -3,21 +3,26 @@ function main(input) {
   var str = "";
   str = input;
 
-  var nonRepeatingChar = "";
+  var countArr = [];
 
-  for (var i = 0; i < str.length; i++) {
-    for (var x = i + 1; x < str.length - 1; x++) {
-      console.log(str[i] + "" + str[x]);
-      if (str[i] === str[x]) {
-        nonRepeatingChar = str[x];
+  var sortedString = "";
+
+  sortedString = sortAlphabets(str);
+
+  for (var i = 0; i < sortedString.length; i++) {
+    if (sortedString.charAt(i) === sortedString.charAt(i + 1)) {
+    } else {
+      if (sortedString.charAt(i + 1) != sortedString.charAt(i + 2)) {
+        return "First non repeating character is " + sortedString.charAt(i + 1);
       }
     }
   }
-  if (nonRepeatingChar === "") {
-    nonRepeatingChar = "-1";
-  }
-
-  return nonRepeatingChar;
+  return -1;
 }
 
-console.log(main("abcbbac"));
+var sortAlphabets = function (text) {
+  return text.split("").sort().join("");
+};
+console.log(main("aaabcccdeeef"));
+console.log(main("abcbad"));
+console.log(main("abcabcabc"));
